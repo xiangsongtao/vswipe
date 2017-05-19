@@ -35,18 +35,18 @@
             </p>
         </div>
 
-        <swipe ref="mySwipe"
-               :startSlide="1"
-               :swiping="swipingHandler"
-               :callback="callbackHandler"
-               :transitionEnd="transitionEndHandler"
-               :disableScroll="false"
-               :stopPropagation="true"
+        <Slides ref="mySwipe"
+               :initialSlide="1"
+               :touchMoveStopPropagation="true"
+               :loop="true"
+               @onProgress="swipingHandler"
+               @onSlideChangeEnd="callbackHandler"
+               @onTransitionEnd="transitionEndHandler"
                style='max-width:500px;margin:0 auto'>
-            <swipe-item><b>0</b></swipe-item>
-            <swipe-item><b>1</b></swipe-item>
-            <swipe-item><b>2</b></swipe-item>
-        </swipe>
+            <Slide><b>0</b></Slide>
+            <Slide><b>1</b></Slide>
+            <Slide><b>2</b></Slide>
+        </Slides>
 
         <div style='text-align:center;padding-top:20px;'>
             <button @click='prev()'>prev</button>
@@ -65,27 +65,6 @@
                 <router-link to='/dynamic'>Dynamic Swipe Items</router-link>
             </li>
         </ul>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias animi at blanditiis distinctio doloribus ducimus earum eveniet explicabo ipsum modi, molestiae neque nostrum officia officiis quam, reiciendis voluptas voluptates.</p>
     </div>
 </template>
 <script type="text/javascript">
@@ -115,23 +94,17 @@
     },
     methods: {
       prev() {
-        console.log('prev')
-        this.$refs.mySwipe.prev()
+        this.$refs.mySwipe.swiper.slidePrev()
       },
 
       next() {
-        console.log('next')
-        this.$refs.mySwipe.next()
+        this.$refs.mySwipe.swiper.slideNext()
       }
-
     },
     mounted () {
       setTimeout(() => {
-        console.log('3000')
-        console.log(this.mySwipeComponent)
-        console.log(this.mySwipeComponent.getNumSlides())
-        console.log(this.mySwipeComponent.getPos())
-        console.log(this.mySwipeComponent.slide(0,3000))
+//        console.log('3000')
+//        console.log(this.mySwipeComponent)
       }, 3000)
     }
   }

@@ -19,27 +19,30 @@
 <template>
   <div style="height: 100%;">
     <back-button></back-button>
-    <swipe class="swipe-fullscreen" :options="swipeOptions">
-      <swipe-item style="background: #EA5A49;"></swipe-item>
-      <swipe-item style="background: #44CC00;"></swipe-item>
-      <swipe-item style="background: #FFBD17;"></swipe-item>
-    </swipe>
+    <Slides class="swipe-fullscreen"
+           :initialSlide="0"
+           :speed="300"
+           :autoplay="4000"
+           :loop="true"
+           @onSlideChangeEnd="onSlideChangeEndHandler"
+           @onTransitionEnd="onTransitionEndhandler">
+      <Slide style="background: #EA5A49;"></Slide>
+      <Slide style="background: #44CC00;"></Slide>
+      <Slide style="background: #FFBD17;"></Slide>
+    </Slides>
   </div>
 </template>
 <script>
   export default {
     data () {
-      return {
-        swipeOptions: {
-          startSlide: 0,
-          speed: 300,
-          auto: 4000,
-          continuous: true,
-          disableScroll: false,
-          stopPropagation: false,
-          callback: function (index, slide) { console.log('slide changes') },
-          transitionEnd: function (index, slide) { console.log('slide transition ends') }
-        }
+      return {}
+    },
+    methods:{
+      onSlideChangeEndHandler (index, slide) {
+        console.log('slide changes')
+      },
+      onTransitionEndhandler (index, slide) {
+        console.log('slide transition ends')
       }
     }
   }

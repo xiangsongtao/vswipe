@@ -3,8 +3,8 @@ import SwipeItem from './SwipeItem'
 
 let VSwipe = {
   install: function (Vue, options) {
-    Vue.component('swipe', Swipe)
-    Vue.component('swipe-item', SwipeItem)
+    Vue.component('Slides', Swipe)
+    Vue.component('Slid', SwipeItem)
   }
 }
 

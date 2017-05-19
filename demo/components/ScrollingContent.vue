@@ -1,21 +1,21 @@
 <template>
   <div style="height: 100%;">
     <back-button></back-button>
-    <swipe class="container">
-      <swipe-item>
+    <Slides class="container">
+      <Slide>
         <h1>1</h1>
-      </swipe-item>
-      <swipe-item>
+      </Slide>
+      <Slide>
         <h1>2</h1>
-      </swipe-item>
-      <swipe-item>
+      </Slide>
+      <Slide>
         <div class="scroll-wrap">
           <div class="scroll">
             <p v-for="(item, index) in list" v-text="index"></p>
           </div>
         </div>
-      </swipe-item>
-    </swipe>
+      </Slide>
+    </Slides>
   </div>
 </template>
 <style>
